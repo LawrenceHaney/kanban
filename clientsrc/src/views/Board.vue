@@ -6,14 +6,17 @@
 </template>
 
 <script>
-export default {
-  name: "board",
-  computed: {
-    board() {
-      //FIXME This does not work on page reload because the activeBoard is empty in the store
-      return this.$store.state.activeBoard;
-    }
-  },
-  props: ["boardId"]
-};
+  export default {
+    name: "board",
+    mounted() {
+      this.$store.dispatch("setActiveBoard", this.$route.params.boardId)
+    },
+    computed: {
+      board() {
+        //FIXME This does not work on page reload because the activeBoard is empty in the store
+        return this.$store.state.activeBoard;
+      }
+    },
+    props: ["boardId"]
+  };
 </script>
