@@ -37,13 +37,12 @@
     name: "board",
     mounted() {
       this.$store.dispatch("setActiveBoard", this.$route.params.boardId)
-      this.$store.dispatch("getLists", this.newList.boardId)
+      this.$store.dispatch("getLists", this.$route.params.boardId)
     },
     data() {
       return {
         newList: {
           title: "",
-          boardId: this.$store.state.activeBoard.id,
           creatorEmail: this.$auth.userInfo.email,
         },
         newBoard: {
@@ -67,7 +66,10 @@
       addList() {
         console.log(this.newList);
         this.$store.dispatch("addList", this.newList);
-        this.newList = { title: "" };
+        this.newList = {
+          title: "",
+          creatorEmail: this.$auth.userInfo.email,
+        };
       },
       toggleEdit() {
         this.editMode = !this.editMode
