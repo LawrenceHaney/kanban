@@ -37,4 +37,4 @@ class ListService {
 }
 
 
-export const boardService = new ListService()
+export const listService = new ListService()

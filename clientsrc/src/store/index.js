@@ -1,3 +1,4 @@
+import { STATES } from 'mongoose'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router/index'
@@ -11,7 +12,8 @@ export default new Vuex.Store({
   state: {
     user: {},
     boards: [],
-    activeBoard: {}
+    activeBoard: {},
+    lists: [],
   },
   mutations: {
     setUser(state, user) {
@@ -22,7 +24,10 @@ export default new Vuex.Store({
     },
     setActiveBoard(state, board) {
       state.activeBoard = board
-    }
+    },
+    setLists(state, lists) {
+      state.lists = lists
+    },
   },
   actions: {
     //#region -- AUTH STUFF --
@@ -63,12 +68,38 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error);
       }
-    }
+    },
+    async editBoard({ commit, dispatch }, board) {
+      try {
+        let res = await api.put("boards/" + board.id, board)
+        commit("setActiveBoard", board)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async deleteBoard({ commit, dispatch }, boardId) {
+      try {
+        await api.delete("boards/" + boardId)
+        commit("setActiveBoard", {})
+        router.push({ name: "boards" })
+      } catch (error) {
+        console.error(error);
+      }
+    },
     //#endregion
 
 
     //#region -- LISTS --
-
+    async getLists({ commit, dispatch }, boardId) {
+      let res = await api.get('boards/' + boardId + '/lists')
+      commit("setLists", res.data)
+    },
+    async addList({ commit, dispatch }, list) {
+      await api.post('lists/', list)
+        .then(serverList => {
+          dispatch('getLists', list.boardId)
+        })
+    }
 
 
     //#endregion
