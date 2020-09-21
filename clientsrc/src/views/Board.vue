@@ -67,7 +67,7 @@
       addList() {
         console.log(this.newList);
         this.$store.dispatch("addList", this.newList);
-        this.newList.title = { title: "" };
+        this.newList = { title: "" };
       },
       toggleEdit() {
         this.editMode = !this.editMode
