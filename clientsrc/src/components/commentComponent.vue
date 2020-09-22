@@ -1,5 +1,5 @@
 <template>
-  <div class="card row mx-2 my-1 p-2">
+  <div class="card row mx-2 my-1 p-2 text-dark">
     <div v-if="!editMode" class="col d-flex flex-column justify-content-between">
       <p class="row">{{commentProp.title}} </p>
       <div class="row justify-content-end">
