@@ -2,27 +2,30 @@
     <div class="list col-4 my-2">
         <div class="card">
             <div class="card-body">
-                <div v-if="!editMode">
-                    <h4 class="card-title">{{listProp.title}} </h4>
-                    <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Edit</button>
-                    <button type="button" class="btn btn-outline-danger" @click="deleteList">Delete</button>
+                <div v-if="!editMode" class="row justify-content-between">
+                    <h3 class="card-title pl-3">{{listProp.title}} </h3>
+                    <div>
+                        <button type="button" class="btn btn-outline-success" @click="toggleEdit">Edit</button>
+                        <button type="button" class="btn btn-outline-danger" @click="deleteList">Delete</button>
+                    </div>
                 </div>
-                <div v-else>
-                <input v-model="newList.title" :placeholder="listProp.title"  class= "card-title" />
-                <button type="button" class="btn btn-outline-danger" @click="editList">Save</button>
-                <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
+                <div v-else class="row justify-content-between">
+                    <input v-model="newList.title" :placeholder="listProp.title" class="card-title" />
+                    <div>
+                        <button type="button" class="btn btn-outline-danger" @click="editList">Save</button>
+                        <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
+                    </div>
                 </div>
                 <div class="row justify-content-center">
-                    <h1>tasks</h1>
                     <task-component v-for="task in tasks" :key="task.id" :taskProp="task" />
-                <form @submit.prevent="addTask">
-                <input type="text" placeholder="title" v-model="newTask.title" required />
-                <button type="submit">Create Task</button>
-        </form>
-        </div>
-      </div>
+                    <form @submit.prevent="addTask">
+                        <input type="text" placeholder="title" v-model="newTask.title" required />
+                        <button type="submit">Create Task</button>
+                    </form>
+                </div>
             </div>
         </div>
+    </div>
 
 </template>
 
@@ -37,41 +40,41 @@
                 editMode: false
             }
         },
-        mounted (){
+        mounted() {
             this.$store.dispatch("getTasks", this.listProp.id)
         },
         computed: {
-            tasks(){
+            tasks() {
                 return this.$store.state.tasks[this.listProp.id]
             }
         },
         methods: {
-            addTask(){
+            addTask() {
                 this.newTask.listId = this.listProp.id
                 this.$store.dispatch("addTask", this.newTask)
                 this.newTask = {}
             },
-            deleteList(){
+            deleteList() {
                 if (window.confirm("Are you sure you want to delete this list?")) {
-          this.$store.dispatch("deleteList", this.listProp.id)
-        }
+                    this.$store.dispatch("deleteList", this.listProp.id)
+                }
             },
-            editList(){
-                if(this.newList.title){
+            editList() {
+                if (this.newList.title) {
 
                     this.newList.id = this.listProp.id
-                this.$store.dispatch("editList", this.newList)
-                this.toggleEdit()
-                }else window.alert("you must type something")
+                    this.$store.dispatch("editList", this.newList)
+                    this.toggleEdit()
+                } else window.alert("you must type something")
             },
-            toggleEdit(){
+            toggleEdit() {
                 this.editMode = !this.editMode
             }
         },
         props: ["listProp"],
         components: {
-        taskComponent
-    },
+            taskComponent
+        },
     };
 </script>
 

@@ -1,8 +1,8 @@
 <template>
-  <div class="board container-fluid mt-2">
+  <div class="board container-fluid">
     <div v-if="board.title">
-      <div v-if="!editMode" class="row justify-content-between">
-        <h1>{{board.title}}</h1>
+      <div v-if="!editMode" class="row justify-content-center align-items-center text-dark bg-faded pt-2 mb-2">
+        <h1 class="mr-5">{{board.title}}</h1>
         <div>
           <button type="button" class="btn btn-primary" @click="toggleEdit">Edit</button>
           <button type="button" class="btn btn-danger" @click="deleteBoard">Delete</button>
@@ -19,7 +19,7 @@
       <div class="row justify-content-center">
         <form @submit.prevent="addList">
           <input type="text" placeholder="title" v-model="newList.title" required />
-          <button type="submit">Create List</button>
+          <button type="submit" class="btn btn-success">Create List</button>
         </form>
       </div>
       <!-- List components -->
