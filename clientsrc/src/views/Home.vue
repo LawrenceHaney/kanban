@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home text-pop">
     <h1>This is your home page.</h1>
   </div>
 </template>

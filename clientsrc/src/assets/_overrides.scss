@@ -1,3 +1,50 @@
 .btn-primary{
   color: $light;
 }
+
+.background{
+  background-image: url("https://images.unsplash.com/photo-1500333070776-343c73e1eb4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-grow: 1;
+}
+
+.flex-grow{
+  flex-grow: 1;
+}
+
+#app{
+margin: 0;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+.content-shadow{
+  box-shadow: .5em .5em 0px;
+}
+
+.text-pop{
+  color: var(--light);
+  text-shadow: .1em .1em 0px var(--dark);
+}
+
+.pop {
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+.pop:hover {
+  transform: scale(1.05);
+  box-shadow: .6em .6em 1em;
+}
+.bg-faded{
+  background-color: transparentize($color: #ffffff, $amount: .75);
+}
+.profile{
+  border-radius: 50%;
+  height: 15vh;
+  width: 15vh;
+  box-shadow: .2em .2em .1em var(--dark);
+}
