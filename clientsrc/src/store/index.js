@@ -85,10 +85,11 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    async deleteBoard({ commit, dispatch }, boardId) {
+    async deleteBoard({ commit, dispatch, state }, boardId) {
       try {
         await api.delete("boards/" + boardId)
         commit("setActiveBoard", {})
+        commit("setBoards", state.boards.filter(b => b.id != boardId))
         router.push({ name: "boards" })
       } catch (error) {
         console.error(error);
@@ -154,6 +155,19 @@ export default new Vuex.Store({
           try {
             let res = await api.put("tasks/" + task.id, task)
             .then(serverTask => {
+              dispatch('getTasks', task.listId)
+            })
+          } catch (error) {
+            console.error(error);
+          }
+        },
+        async moveTask({ commit, dispatch, state }, task) {
+          try {
+            let listId= task.listId
+            task.listId = task.newId
+            let res = await api.put("tasks/" + task.id, task)
+            .then(serverTask => {
+              dispatch('getTasks', listId)
               dispatch('getTasks', task.listId)
             })
           } catch (error) {

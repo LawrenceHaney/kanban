@@ -10,7 +10,12 @@
       <button type="button" class="btn btn-outline-danger" @click="editTask">Save</button>
       <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
     </div>
+    <div v-if="moveMode" >
+    </div>
+    <div v-else @click="toggleMove()">
+    </div>
     <h1>Comments</h1>
+      <i class="fas fa-arrows-alt"></i>
     <comment-component v-for="comment in comments" :key="comment.id" :commentProp="comment"/>
         <form @submit.prevent="addComment">
           <input type="text" placeholder="title" v-model="newComment.title" required />
@@ -28,6 +33,7 @@ data(){
     newComment: {},
     newTask: {},
     editMode: false,
+    moveMode: false,
   }
 },
 methods:{
@@ -48,6 +54,13 @@ methods:{
   toggleEdit(){
     this.editMode = !this.editMode
   },
+  moveTask(){
+    this.newTask.listId = this.taskProp.listId
+    this.newTask.newId = this.taskProp.newId
+    this.newTask.id = this.taskProp.id
+    this.$store.dispatch("editTask", this.newTask)
+    this.toggleEdit()
+  }
 },
 mounted(){
   this.$store.dispatch("getComments", this.taskProp.id)
@@ -55,6 +68,9 @@ mounted(){
 computed:{
   comments(){
     return this.$store.state.comments[this.taskProp.id]
+  },
+  lists(){
+    return this.$store.state.lists
   }
 },
   props: ["taskProp"],
