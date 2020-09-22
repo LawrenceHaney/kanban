@@ -1,21 +1,20 @@
 <template>
   <div class="boards container-fluid">
     <div class="row justify-content-around">
-    <div class="col-3 bg-primary p-4 my-4">
+    <div class="col-3 bg-primary p-4 my-4 content-shadow pop">
       <h1 class="card-title">Add a new board</h1>
-    <form @submit.prevent="addBoard">
-      <input type="text" placeholder="title" v-model="newBoard.title" required />
-      <input type="text" placeholder="description" v-model="newBoard.description" />
-      <button type="submit">Create Board</button>
+    <form @submit.prevent="addBoard" class="row justify-content-center">
+      <input type="text" placeholder="title" v-model="newBoard.title" required  class="col-10 m-1"/>
+      <textarea type="text" placeholder="description" v-model="newBoard.description" class="col-10 m-1"/>
+      <button type="submit" class="btn btn-outline-dark m-1">Create Board</button>
     </form>
       </div>
-      <div class="col-7 card bg-warning my-4">
+      <div class="col-7 card bg-success my-4 content-shadow">
 
-    <div v-for="board in boards" :key="board.id" class="row justify-content-around">
-      <card class="bg-primary p-3 col-10 my-1">
-      <router-link :to="{name: 'board', params: {boardId: board.id}}" class="btn btn-secondary justify-content-between row">
+    <div v-for="board in boards" :key="board.id" class="row justify-content-around my-2">
+      <router-link :to="{name: 'board', params: {boardId: board.id}}" class="btn btn-primary justify-content-between col-10 my-2pop">
         <div class="row">
-          <div class="col-3 bg-sucess">
+          <div class="col-3 border-right">
           <p>
           {{board.creator.name}}
           </p>
@@ -23,19 +22,16 @@
           
           </div>
           <div class="col-9">
-
           <h4>
           {{board.title}} 
           </h4>
           <h6>
           {{board.description}}
           </h6>
+        <button type="button" class="btn btn-danger" @click="deleteBoard(board.id)">Delete</button>
           </div> 
           </div>
-        <button type="button" class="btn btn-danger" @click="deleteBoard(board.id)">Delete</button>
       </router-link>
-      
-      </card>
       </div>
     </div>
     </div>
