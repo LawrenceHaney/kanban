@@ -15,6 +15,7 @@ export default new Vuex.Store({
     activeBoard: {},
     lists: [],
     tasks: {},
+    comments: {},
   },
   mutations: {
     setUser(state, user) {
@@ -30,8 +31,10 @@ export default new Vuex.Store({
       state.lists = lists
     },
     setTasks(state, payload) {
-      // state.tasks[payload.listId] = payload.tasks
       Vue.set(state.tasks, payload.listId, payload.tasks)
+    },
+    setComments(state, payload) {
+      Vue.set(state.comments, payload.taskId, payload.comments)
     },
   },
   actions: {
@@ -147,7 +150,50 @@ export default new Vuex.Store({
             console.error(error);
           }
         },
+        async editTask({ commit, dispatch, state }, task) {
+          try {
+            let res = await api.put("tasks/" + task.id, task)
+            .then(serverTask => {
+              dispatch('getTasks', task.listId)
+            })
+          } catch (error) {
+            console.error(error);
+          }
+        },
     
+    
+        //#endregion
+        //#region -- Comments --
+        async getComments({ commit, dispatch }, taskId) {
+          let res = await api.get('tasks/' + taskId + '/comments')
+          commit("setComments", {comments: res.data, taskId})
+        },
+        async addComment({ commit, dispatch, state }, comment) {
+          await api.post('comments/', comment)
+            .then(serverComment => {
+              dispatch('getComments', comment.taskId)
+            })
+        },
+        async deleteComment({ commit, dispatch, state }, comment) {
+          try {
+            await api.delete("comments/" + comment.id)
+            .then(serverComment => {
+              dispatch('getComments', comment.taskId)
+            })
+          } catch (error) {
+            console.error(error);
+          }
+        },
+        async editComment({ commit, dispatch, state }, comment) {
+          try {
+            let res = await api.put("comments/" + comment.id, comment)
+            .then(serverComment => {
+              dispatch('getComments', comment.taskId)
+            })
+          } catch (error) {
+            console.error(error);
+          }
+        },
     
         //#endregion
   }

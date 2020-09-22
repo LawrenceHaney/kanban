@@ -13,6 +13,7 @@
                 <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
                 </div>
                 <div class="row justify-content-center">
+                    <h1>tasks</h1>
                     <task-component v-for="task in tasks" :key="task.id" :taskProp="task" />
                 <form @submit.prevent="addTask">
                 <input type="text" placeholder="title" v-model="newTask.title" required />
@@ -22,11 +23,11 @@
       </div>
             </div>
         </div>
-    </div>
+
 </template>
 
 <script>
-    import taskComponent from "./taskComponet.vue"
+    import taskComponent from "./taskComponent.vue"
     export default {
         name: "listComponent",
         data() {
