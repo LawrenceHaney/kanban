@@ -1,5 +1,5 @@
 <template>
-  <div class="card col-10 my-1 py-1 bg-dark text-light">
+  <div class="card col-11 my-1 py-1 bg-dark text-light">
     <div v-if="!editMode" class="row justify-content-between px-2">
       <h4 class="card-title">{{taskProp.title}} </h4>
       <div class="d-flex align-items-center">
