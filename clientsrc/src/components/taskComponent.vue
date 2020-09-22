@@ -1,10 +1,8 @@
 <template>
-  <div class="card col-10 my-1 py-1 bg-light">
+  <div class="card col-10 my-1 py-1 bg-dark text-light">
     <div v-if="!editMode" class="row justify-content-between px-2">
       <h4 class="card-title">{{taskProp.title}} </h4>
       <div class="d-flex align-items-center">
-        <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Edit</button>
-        <button type="button" class="btn btn-outline-danger" @click="deleteTask">Delete</button>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -16,13 +14,15 @@
             </div>
           </div>
         </div>
+        <button type="button" class="btn btn-light" @click="toggleEdit">Edit</button>
+        <button type="button" class="btn btn-danger" @click="deleteTask">Delete</button>
       </div>
     </div>
     <div v-if="editMode" class="row justify-content-between px-1">
       <input v-model="newTask.title" :placeholder="taskProp.title" class="card-title" />
       <div>
-        <button type="button" class="btn btn-outline-danger" @click="editTask">Save</button>
-        <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
+        <button type="button" class="btn btn-light" @click="editTask">Save</button>
+        <button type="button" class="btn btn-danger" @click="toggleEdit">Cancel</button>
       </div>
     </div>
     <comment-component class="row" v-for="comment in comments" :key="comment.id" :commentProp="comment" />
