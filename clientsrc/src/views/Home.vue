@@ -1,17 +1,25 @@
 <template>
-  <div class="home text-pop container-fluid">
-    <div class="row bg-light">
+  <div class="home container-fluid">
+    <div class="row">
+
+    <div class="col-12 land1">
+      <div class="darken-bg row p-3">
       <div class="col-3">
-        <img src="" alt="">
+        <img src="https://images.unsplash.com/photo-1589792924333-edbfbe7c8be7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="" class="land-img content-shadow">
       </div>
-      <div class="col-8">
-        <h3>title</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur quibusdam ullam, laborum id beatae reprehenderit nihil eos. Aliquam tempore amet, dolor sint ratione culpa nesciunt laudantium obcaecati corrupti maiores expedita!</p>
+      <div class="col-8 darken-bg text-pop ">
+        <h1 class="text-left">Kanban 看板</h1>
+        <blockquote class="blockquote text-center">
+          <p class="mb-0"> To produce only what is needed, when it is needed and in the amount needed. </p>
+          <footer class="blockquote-footer">Taiichi Ohno</footer>
+        </blockquote>
       </div>
     </div>
+      </div>
     <div class="row bg-light"></div>
     <div class="row bg-light"></div>
   </div>
+    </div>
 </template>
 
 
