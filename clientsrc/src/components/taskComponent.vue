@@ -11,11 +11,22 @@
       <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
     </div>
     <div v-if="moveMode" >
+      <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div v-for="list in lists" :key="list.id">
+        <button class="dropdown-item" @click="moveTask(list.id)">{{list.title}}</button>
+      </div>
+      </div>
+      <button @click="toggleMove">cancel</button>
+  </div>
     </div>
     <div v-else @click="toggleMove()">
+      <button>toggle move</button>
     </div>
     <h1>Comments</h1>
-      <i class="fas fa-arrows-alt"></i>
     <comment-component v-for="comment in comments" :key="comment.id" :commentProp="comment"/>
         <form @submit.prevent="addComment">
           <input type="text" placeholder="title" v-model="newComment.title" required />
@@ -54,12 +65,16 @@ methods:{
   toggleEdit(){
     this.editMode = !this.editMode
   },
-  moveTask(){
+  toggleMove(){
+    this.moveMode = !this.moveMode
+  },
+  moveTask(newId){
     this.newTask.listId = this.taskProp.listId
-    this.newTask.newId = this.taskProp.newId
+    this.newTask.newId = newId
     this.newTask.id = this.taskProp.id
-    this.$store.dispatch("editTask", this.newTask)
-    this.toggleEdit()
+    console.log(this.newTask)
+    this.$store.dispatch("moveTask", this.newTask)
+    this.toggleMove()
   }
 },
 mounted(){
