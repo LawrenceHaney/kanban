@@ -1,20 +1,34 @@
 <template>
   <div class="card">
     <h6 class="card-title">{{taskProp.title}}</h6>
-    <div class="row justify-content-center">
         <form @submit.prevent="addComment">
           <input type="text" placeholder="title" v-model="newCom.title" required />
-          <button type="submit">Create List</button>
+          <button type="submit">Create Comment</button>
         </form>
-      </div>
   </div>
 </template>
 
 <script>
 export default {
 data(){
-  newCom: {}
-}
+  return{
+    newCom: {}
+  }
+},
+methods:{
+  addComment(){},
+  editTask(){
+
+  },
+  deleteTask(){
+
+  },
+  toggleEdit(){
+    
+  },
+},
+
+  props: ["taskProp"],
 }
 </script>
 

@@ -64,7 +64,6 @@
     },
     methods: {
       addList() {
-        console.log(this.newList);
         this.$store.dispatch("addList", this.newList);
         this.newList = {
           title: "",
