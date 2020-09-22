@@ -1,37 +1,34 @@
 <template>
-  <div class="card col-10">
-    <div v-if="!editMode" class="row justify-content-between">
+  <div class="card col-10 my-1 py-1 bg-light">
+    <div v-if="!editMode" class="row justify-content-between px-2">
       <h4 class="card-title">{{taskProp.title}} </h4>
-      <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Edit</button>
-      <button type="button" class="btn btn-outline-danger" @click="deleteTask">Delete</button>
-    </div>
-    <div v-else>
-      <input v-model="newTask.title" :placeholder="taskProp.title" class="card-title" />
-      <button type="button" class="btn btn-outline-danger" @click="editTask">Save</button>
-      <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
-    </div>
-    <div v-if="moveMode">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <div v-for="list in lists" :key="list.id">
-            <button class="dropdown-item" @click="moveTask(list.id)">{{list.title}}</button>
+      <div class="d-flex align-items-center">
+        <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Edit</button>
+        <button type="button" class="btn btn-outline-danger" @click="deleteTask">Delete</button>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Move to
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div v-for="list in lists" :key="list.id">
+              <button class="dropdown-item" @click="moveTask(list.id)">{{list.title}}</button>
+            </div>
           </div>
         </div>
-        <button @click="toggleMove">cancel</button>
       </div>
     </div>
-    <div v-else @click="toggleMove()">
-      <button>toggle move</button>
+    <div v-if="editMode" class="row justify-content-between px-1">
+      <input v-model="newTask.title" :placeholder="taskProp.title" class="card-title" />
+      <div>
+        <button type="button" class="btn btn-outline-danger" @click="editTask">Save</button>
+        <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
+      </div>
     </div>
-    <h6>Comments</h6>
-    <comment-component v-for="comment in comments" :key="comment.id" :commentProp="comment" />
-    <form @submit.prevent="addComment">
-      <input type="text" placeholder="title" v-model="newComment.title" required />
-      <button type="submit">Create Comment</button>
+    <comment-component class="row" v-for="comment in comments" :key="comment.id" :commentProp="comment" />
+    <form @submit.prevent="addComment" class="mt-5 mb-1">
+      <input class="col-12" type="text" placeholder="New Comment" v-model="newComment.title" required />
+      <button class="btn btn-secondary mt-1" type="submit">Create Comment</button>
     </form>
   </div>
 </template>

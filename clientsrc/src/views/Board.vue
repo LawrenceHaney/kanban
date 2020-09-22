@@ -8,8 +8,8 @@
           <button type="button" class="btn btn-danger" @click="deleteBoard">Delete</button>
         </div>
       </div>
-      <div v-if="editMode" class="row justify-content-between">
-        <input type="text" :placeholder="board.title" v-model="newBoard.title" required />
+      <div v-if="editMode" class="row justify-content-center align-items-center text-dark bg-faded pt-2 mb-2">
+        <input class="mr-5" type="text" :placeholder="board.title" v-model="newBoard.title" required />
         <div>
           <button type="button" class="btn btn-primary" @click="editBoard">Save</button>
           <button type="button" class="btn btn-danger" @click="toggleEdit">Cancel</button>
@@ -18,7 +18,7 @@
       <!-- List form -->
       <div class="row justify-content-center">
         <form @submit.prevent="addList">
-          <input type="text" placeholder="title" v-model="newList.title" required />
+          <input type="text" placeholder="Board Title" v-model="newList.title" required />
           <button type="submit" class="btn btn-success">Create List</button>
         </form>
       </div>

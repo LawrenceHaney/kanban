@@ -19,8 +19,8 @@
                 <div class="row justify-content-center">
                     <task-component v-for="task in tasks" :key="task.id" :taskProp="task" />
                     <form @submit.prevent="addTask">
-                        <input type="text" placeholder="title" v-model="newTask.title" required />
-                        <button type="submit">Create Task</button>
+                        <input type="text" placeholder="Add Task" v-model="newTask.title" required />
+                        <button class="btn btn-secondary" type="submit">Create Task</button>
                     </form>
                 </div>
             </div>
