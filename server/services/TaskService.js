@@ -37,4 +37,4 @@ class TaskService {
 }
 
 
-export const boardService = new TaskService()
+export const taskService = new TaskService()
