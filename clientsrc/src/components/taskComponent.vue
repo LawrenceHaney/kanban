@@ -1,12 +1,12 @@
 <template>
   <div class="card col-11 my-1 py-1 bg-dark text-light">
     <div v-if="!editMode" class="row justify-content-between px-2">
-      <h4 class="card-title">{{taskProp.title}} </h4>
-      <div class="d-flex align-items-center">
+      <div class="d-flex justify-content-between">
+        <i class="fa fa-pencil-alt mt-2 mx-1 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
+        <h4 class="card-title">{{taskProp.title}} </h4>
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Move to
+          <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <div v-for="list in lists" :key="list.id">
@@ -14,9 +14,8 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-light" @click="toggleEdit">Edit</button>
-        <button type="button" class="btn btn-danger" @click="deleteTask">Delete</button>
       </div>
+      <i class="fa fa-times align -self-start mr-3 icon-pop" @click="deleteTask" aria-hidden="true"></i>
     </div>
     <div v-if="editMode" class="row justify-content-between px-1">
       <input v-model="newTask.title" :placeholder="taskProp.title" class="card-title" />
@@ -26,9 +25,13 @@
       </div>
     </div>
     <comment-component class="row" v-for="comment in comments" :key="comment.id" :commentProp="comment" />
-    <form @submit.prevent="addComment" class="mt-5 mb-1">
-      <input class="col-12" type="text" placeholder="New Comment" v-model="newComment.title" required />
-      <button class="btn btn-secondary mt-1" type="submit">Create Comment</button>
+    <form @submit.prevent="addComment" class="mt-3 mb-1">
+      <div class="input-group mt-3">
+        <input type="text" class="form-control bg-light" v-model="newComment.title" placeholder="New Comment">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="submit"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
+      </div>
     </form>
   </div>
 </template>
@@ -52,13 +55,17 @@
         this.newComment = {}
       },
       editTask() {
-        this.newTask.listId = this.taskProp.listId
-        this.newTask.id = this.taskProp.id
-        this.$store.dispatch("editTask", this.newTask)
-        this.toggleEdit()
+        if (this.newTask.title) {
+          this.newTask.listId = this.taskProp.listId
+          this.newTask.id = this.taskProp.id
+          this.$store.dispatch("editTask", this.newTask)
+          this.toggleEdit()
+        } else window.alert("Field cannot be empty")
       },
       deleteTask() {
-        this.$store.dispatch("deleteTask", this.taskProp)
+        if (window.confirm("Are you sure you want to delete this task?")) {
+          this.$store.dispatch("deleteTask", this.taskProp)
+        }
       },
       toggleEdit() {
         this.editMode = !this.editMode
@@ -70,7 +77,6 @@
         this.newTask.listId = this.taskProp.listId
         this.newTask.newId = newId
         this.newTask.id = this.taskProp.id
-        console.log(this.newTask)
         this.$store.dispatch("moveTask", this.newTask)
         this.toggleMove()
       }
