@@ -3,7 +3,7 @@
 }
 
 .background{
-  background-image: url("https://images.unsplash.com/photo-1500333070776-343c73e1eb4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80");
+  background-image: url("https://images.unsplash.com/photo-1532186773960-85649e5cb70b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@ flex-direction: column;
 }
 
 .content-shadow{
-  box-shadow: .5em .5em 0px;
+  box-shadow: .5em .5em 0px #080708;
 }
 
 .text-pop{
@@ -37,7 +37,7 @@ flex-direction: column;
 }
 .pop:hover {
   transform: scale(1.05);
-  box-shadow: .6em .6em 1em;
+  box-shadow: .6em .6em 1em #080708;
 }
 .icon-pop:hover{
   transform: scale(1.1);
@@ -49,7 +49,7 @@ flex-direction: column;
   border-radius: 50%;
   height: 15vh;
   width: 15vh;
-  box-shadow: .2em .2em .1em var(--dark);
+  box-shadow: .2em .2em .1em #080708;
 }
 
 .land-img{
@@ -62,7 +62,7 @@ flex-direction: column;
 }
 
 .darken-bg{
-  background-color: transparentize($color: #584829, $amount: .30);
+  background-color: transparentize($color: #080708, $amount: .30);
 
 }
 
