@@ -58,6 +58,7 @@
     methods: {
       addComment() {
         this.newComment.taskId = this.taskProp.id
+        this.newComment.boardId = this.taskProp.boardId
         this.$store.dispatch("addComment", this.newComment)
         this.newComment = {}
       },
