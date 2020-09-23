@@ -10,11 +10,19 @@
       </div>
       <div v-if="editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2">
         <div class="mt-2 mb-3 d-flex">
-          <i class="fa fa-undo align-self-center icon-pop ml-2" @click="toggleEdit" aria-hidden="true"></i>
-          <input class="mx-1 form-control bg-light" type="text" :placeholder="board.title" v-model="newBoard.title"
-            required />
-          <i class="fas fa-save align-self-center icon-pop" @click="editBoard"></i>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button class="btn btn-secondary" @click="toggleEdit" type="button"><i
+                  class="fa fa-undo align-self-center" aria-hidden="true"></i></button>
+            </div>
+            <input type="text" class="form-control bg-light" v-model="newBoard.title" placeholder="New Title">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" @click="editBoard" type="button"><i
+                  class="fas fa-save align-self-center"></i></button>
+            </div>
+          </div>
         </div>
+
       </div>
       <!-- List form -->
       <div class="row justify-content-center mt-2">

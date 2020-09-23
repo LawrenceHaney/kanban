@@ -10,12 +10,19 @@
                     <i class="fa fa-times align-self-start mr-3 icon-pop" @click="deleteList" aria-hidden="true"></i>
                 </div>
                 <div v-else class="row justify-content-between">
-                    <div>
-                        <i class="fa fa-undo align-self-center icon-pop ml-2" @click="toggleEdit"
-                            aria-hidden="true"></i>
-                        <input v-model="newList.title" :placeholder="listProp.title" class="card-title" />
-                        <i class="fas fa-save align-self-center icon-pop" @click="editList"></i>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-secondary" @click="toggleEdit" type="button"><i
+                                    class="fa fa-undo align-self-center" aria-hidden="true"></i></button>
+                        </div>
+                        <input type="text" class="form-control bg-light" v-model="newList.title"
+                            placeholder="New Title">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" @click="editList" type="button"><i
+                                    class="fas fa-save align-self-center"></i></button>
+                        </div>
                     </div>
+
                 </div>
                 <div class="row justify-content-center">
                     <task-component v-for="task in tasks" :key="task.id" :taskProp="task" />
