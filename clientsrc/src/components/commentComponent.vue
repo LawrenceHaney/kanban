@@ -47,7 +47,9 @@
         this.toggleEdit()
       },
       deleteComment() {
-        this.$store.dispatch("deleteComment", this.commentProp)
+        if (window.confirm("Are you sure you want to delete this list?")) {
+          this.$store.dispatch("deleteComment", this.commentProp)
+        }
       }
     }
 
