@@ -1,41 +1,43 @@
 <template>
   <div class="boards container-fluid">
     <div class="row justify-content-around">
-    <div class="col-3 bg-primary p-4 my-4 content-shadow pop">
-      <h1 class="card-title">Add a new board</h1>
-    <form @submit.prevent="addBoard" class="row justify-content-center">
+    <div class="col-3 darken-bg p-4 my-4 content-shadow pop">
+      <h1 class="card-title text-pop fade-in">Add a new board</h1>
+    <form @submit.prevent="addBoard" class="row justify-content-center fade-in">
       <input type="text" placeholder="title" v-model="newBoard.title" required  class="col-10 m-1"/>
       <textarea type="text" placeholder="description" v-model="newBoard.description" class="col-10 m-1"/>
-      <button type="submit" class="btn btn-outline-dark m-1">Create Board</button>
+      <button type="submit" class="btn btn-outline-light m-1 fade-in">Create Board</button>
     </form>
       </div>
-      <div class="col-7 card bg-success my-4 content-shadow">
+      <div class="col-7 card darken-bg my-4 content-shadow pop">
 
     <div v-for="board in boards" :key="board.id" class="row justify-content-around my-2">
-      <router-link :to="{name: 'board', params: {boardId: board.id}}" class="btn btn-primary justify-content-between col-10 my-2pop">
+      <div class="btn btn-dark justify-content-between col-10 my-2 pop fade-in p-2">
         <div class="row">
           <div class="col-3 border-right">
           <p>
           {{board.creator.name}}
           </p>
-          <img :src="board.creator.picture" alt="" class="profile">
+          <img :src="board.creator.picture" alt="" class="profile my-1">
           
           </div>
-          <div class="col-9">
-          <h4>
-          {{board.title}} 
-          </h4>
-          <h6>
-          {{board.description}}
-          </h6>
-        <button type="button" class="btn btn-danger" @click="deleteBoard(board.id)">Delete</button>
-          </div> 
+            <div class="col-9 d-flex flex-column justify-content-around">
+              <router-link :to="{name: 'board', params: {boardId: board.id}}">
+              <h1>
+              {{board.title}} 
+              </h1>
+              <h4>
+              {{board.description}}
+              </h4>
+            </router-link> 
+              <button type="button" class="btn btn-danger" @click="deleteBoard(board.id)">Delete</button>
+            </div>
           </div>
-      </router-link>
+        </div>
       </div>
     </div>
-    </div>
   </div>
+</div>
 </template>
 
 <script>
