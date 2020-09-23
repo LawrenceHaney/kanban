@@ -1,18 +1,18 @@
 <template>
   <div class="board container-fluid">
     <div v-if="board.title">
-      <div v-if="!editMode" class="row justify-content-center align-items-center text-dark bg-faded pt-2 mb-2">
-        <h1 class="mr-5">{{board.title}}</h1>
-        <div>
-          <button type="button" class="btn btn-primary" @click="toggleEdit">Edit</button>
-          <button type="button" class="btn btn-danger" @click="deleteBoard">Delete</button>
+      <div v-if="!editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2 mb-2">
+        <div class="d-flex">
+          <h1 class="mx-2">{{board.title}}</h1>
+          <i class="fa fa-pencil-alt align-self-center icon-pop" @click="toggleEdit" aria-hidden="true"></i>
         </div>
+        <i class="fa fa-times align-self-start mr-3 icon-pop" @click="deleteBoard" aria-hidden="true"></i>
       </div>
-      <div v-if="editMode" class="row justify-content-center align-items-center text-dark bg-faded pt-2 mb-2">
-        <input class="mr-5" type="text" :placeholder="board.title" v-model="newBoard.title" required />
-        <div>
-          <button type="button" class="btn btn-primary" @click="editBoard">Save</button>
-          <button type="button" class="btn btn-danger" @click="toggleEdit">Cancel</button>
+      <div v-if="editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2 mb-2">
+        <div class="mb-4">
+          <i class="fa fa-undo align-self-center icon-pop ml-2" @click="toggleEdit" aria-hidden="true"></i>
+          <input class="mx-1" type="text" :placeholder="board.title" v-model="newBoard.title" required />
+          <i class="fas fa-save align-self-center icon-pop" @click="editBoard"></i>
         </div>
       </div>
       <!-- List form -->
@@ -74,8 +74,10 @@
         this.editMode = !this.editMode
       },
       editBoard() {
-        this.$store.dispatch("editBoard", this.newBoard)
-        this.toggleEdit()
+        if (this.newBoard.title) {
+          this.$store.dispatch("editBoard", this.newBoard)
+          this.toggleEdit()
+        } else window.alert("Field cannot be empty")
       },
       deleteBoard() {
         if (window.confirm("Are you sure you want to delete this board?")) {
