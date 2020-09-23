@@ -1,5 +1,5 @@
 <template>
-  <div class="card col-11 my-1 py-1 bg-dark text-light">
+  <div class="card col-11 my-1 py-1 darken-bg text-light">
     <div v-if="!editMode" class="row justify-content-between px-2">
       <div class="d-flex justify-content-between">
         <i class="fa fa-pencil-alt mt-2 mx-1 icon-pop" @click="toggleEdit" aria-hidden="true"></i>

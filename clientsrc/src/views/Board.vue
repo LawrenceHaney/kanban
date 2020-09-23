@@ -1,12 +1,23 @@
 <template>
   <div class="board container-fluid">
     <div v-if="board.title">
-      <div v-if="!editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2">
-        <div class="d-flex">
+      <div v-if="!editMode" class="row justify-content-between align-items-center text-dark bg-faded py-2 mb-3">
+        <div class="d-flex fade-in">
           <i class="fa fa-pencil-alt align-self-center icon-pop ml-2" @click="toggleEdit" aria-hidden="true"></i>
           <h1 class="mx-2 fjalla">{{board.title}}</h1>
         </div>
-        <i class="fa fa-times align-self-start mr-3 icon-pop" @click="deleteBoard" aria-hidden="true"></i>
+      <!-- List form -->
+      <div class="row justify-content-center mt-2 fade-in">
+        <form @submit.prevent="addList">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control bg-light" v-model="newList.title" placeholder="New List">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="submit">Create List</button>
+            </div>
+          </div>
+        </form>
+      </div>
+        <i class="fa fa-times align-self-start mr-3 icon-pop fade-in" @click="deleteBoard" aria-hidden="true"></i>
       </div>
       <div v-if="editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2">
         <div class="mt-2 mb-3 d-flex">
@@ -22,22 +33,12 @@
             </div>
           </div>
         </div>
+      
+      </div>
 
-      </div>
-      <!-- List form -->
-      <div class="row justify-content-center mt-2">
-        <form @submit.prevent="addList">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control bg-light" v-model="newList.title" placeholder="New List">
-            <div class="input-group-append">
-              <button class="btn btn-secondary" type="submit">Create List</button>
-            </div>
-          </div>
-        </form>
-      </div>
 
       <!-- List components -->
-      <div class="row">
+      <div class="row fade-in">
         <list-component v-for="list in lists" :key="list.id" :listProp="list" />
       </div>
     </div>

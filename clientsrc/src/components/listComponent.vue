@@ -1,8 +1,8 @@
 <template>
     <div class="list col-4 my-2">
-        <div class="card">
+        <div class="card bg-faded">
             <div class="card-body">
-                <div v-if="!editMode" class="row justify-content-between">
+                <div v-if="!editMode" class="row justify-content-between text-dark">
                     <div class="d-flex">
                         <i class="fa fa-pencil-alt mt-2 ml-3 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
                         <h3 class="card-title ml-1 yeseva">{{listProp.title}} </h3>

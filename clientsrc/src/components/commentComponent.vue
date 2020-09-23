@@ -1,5 +1,5 @@
 <template>
-  <div class="card row mx-2 my-1 p-2 text-dark">
+  <div class="card bg-faded row mx-2 my-1 p-2 text-dark">
     <div v-if="!editMode" class="col d-flex justify-content-between">
       <div class="row">
         <i class="fa fa-pencil-alt mx-1 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
@@ -14,7 +14,7 @@
             <button class="btn btn-secondary" @click="toggleEdit" type="button"><i class="fa fa-undo align-self-center"
                 aria-hidden="true"></i></button>
           </div>
-          <input type="text" class="form-control bg-light" v-model="newComment.title" :placeholder="commentProp.title">
+          <input type="text" class="form-control" v-model="newComment.title" :placeholder="commentProp.title">
           <div class="input-group-append">
             <button class="btn btn-secondary" @click="editComment" type="button"><i
                 class="fas fa-save align-self-center"></i></button>
