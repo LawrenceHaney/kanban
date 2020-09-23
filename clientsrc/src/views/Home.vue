@@ -20,18 +20,47 @@
   <div class="spacer"></div>
     <div class="row">
       <div class="col-12 land1">
-        <div class="darken-bg row p-3 justify-content-between">
-          <div class="col-4 fade-in text-center">
-            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80" alt="" class="land-img-3 pop content-shadow ">
-            <h6 class="text-pop  my-3">Efficent Orginization</h6>
+        <div class="darken-bg row py-3 justify-content-around">
+          <div class="flip-card col-3 fade-in">
+            <div class="flip-card-inner">
+              <div class="flip-card-front card-1 content-shadow">
+              </div>
+              <div class="flip-card-back text-pop card-1">
+                <div class="darken-bg d-flex flex-column justify-content-around">
+
+              <h1>Efficent Orginization</h1>
+              <p>Cascading task allow for focused planning</p>
+              <p>See more at a glance</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-4 fade-in text-center">
-            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="" class="land-img-3 pop content-shadow ">
-            <h6 class="text-pop  my-3">Collabrtive Tracking</h6>
+          <div class="flip-card col-3 fade-in">
+            <div class="flip-card-inner">
+              <div class="flip-card-front card-2 content-shadow">
+              </div>
+              <div class="flip-card-back text-pop card-2">
+                <div class="darken-bg d-flex flex-column justify-content-around">
+              <h1>Top Down Tracking</h1>
+              <p>Planning with a focus on today</p>
+              <p>So you can do more together</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-4 fade-in text-center">
-            <img src="https://images.unsplash.com/photo-1542626991-cbc4e32524cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80" alt="" class="land-img-3 pop content-shadow ">
-            <h6 class="text-pop  my-3">Finishing Focused</h6>
+          <div class="flip-card col-3 fade-in">
+            <div class="flip-card-inner">
+              <div class="flip-card-front card-3 content-shadow">
+              </div>
+              <div class="flip-card-back text-pop card-3">
+                <div class="darken-bg d-flex flex-column justify-content-around">
+
+              <h1>Forward Focused</h1>
+              <p>Targets aimed at depoyables</p>
+              <p>Get more to done</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

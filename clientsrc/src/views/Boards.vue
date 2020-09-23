@@ -9,19 +9,19 @@
       <button type="submit" class="btn btn-outline-light m-1 fade-in">Create Board</button>
     </form>
       </div>
-      <div class="col-7 card darken-bg my-4 content-shadow pop">
+      <div class="col-10 card darken-bg my-4 content-shadow">
 
     <div v-for="board in boards" :key="board.id" class="row justify-content-around my-2">
-      <div class="btn btn-dark justify-content-between col-10 my-2 pop fade-in p-2">
-        <div class="row">
-          <div class="col-3 border-right">
+      <div class="justify-content-between col-10 my-2 pop fade-in p-2 text-pop">
+        <div class="row darken-bg">
+          <div class="col-3 profile-box p-3">
+          <img :src="board.creator.picture" alt="" class="profile my-1">
           <p>
           {{board.creator.name}}
           </p>
-          <img :src="board.creator.picture" alt="" class="profile my-1">
           
           </div>
-            <div class="col-9 d-flex flex-column justify-content-around">
+            <div class="col-9 d-flex flex-column justify-content-around text-pop">
               <router-link :to="{name: 'board', params: {boardId: board.id}}">
               <h1>
               {{board.title}} 

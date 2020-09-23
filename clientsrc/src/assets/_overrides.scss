@@ -33,7 +33,6 @@ flex-direction: column;
 
 .pop {
   transition: 0.5s ease;
-  cursor: pointer;
 }
 .pop:hover {
   transform: scale(1.05);
@@ -56,8 +55,9 @@ flex-direction: column;
   max-height: 45vh;
 }
 .land-img-3{
-  max-width: 20vw;
   object-fit: cover;
+  height:45vh ;
+  width: fit-content;
 }
 
 .land1{
@@ -68,6 +68,12 @@ flex-direction: column;
 
 .darken-bg{
   background-color: transparentize($color: #080708, $amount: .30);
+  height: 100%;
+}
+
+.profile-box{
+  background-color: var(--secondary);
+  border-right: var(--dark) solid .5em;
 }
 
 .fade-in { 
@@ -86,4 +92,58 @@ flex-direction: column;
 
 .spacer{
   height: 30vh;
+}
+
+//animations
+.flip-card {
+  background-color: transparent;
+  height:45vh ;
+  width: 100%;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.card-1{
+  background-image: url(https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80);
+  background-size: cover;
+}
+
+.card-2{
+  background-image: url(https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+  background-size: cover;
+}
+
+.card-3{
+  background-image: url(https://images.unsplash.com/photo-1542626991-cbc4e32524cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80);
+  background-size: cover;
+
 }
