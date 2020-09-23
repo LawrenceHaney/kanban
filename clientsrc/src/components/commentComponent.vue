@@ -3,7 +3,7 @@
     <div v-if="!editMode" class="col d-flex justify-content-between">
       <div class="row">
         <i class="fa fa-pencil-alt mx-1 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
-        <h6>{{commentProp.title}} </h6>
+        <h6 class="comorant">{{commentProp.title}} </h6>
       </div>
       <i class="fa fa-times align-self-start  icon-pop" @click="deleteComment" aria-hidden="true"></i>
     </div>

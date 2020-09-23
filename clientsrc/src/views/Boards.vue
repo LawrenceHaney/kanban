@@ -2,7 +2,7 @@
   <div class="boards container-fluid">
     <div class="row justify-content-around">
     <div class="col-3 darken-bg p-4 my-4 content-shadow pop">
-      <h1 class="card-title text-pop fade-in">Add a new board</h1>
+      <h1 class="card-title text-pop fade-in fjalla">Add a new board</h1>
     <form @submit.prevent="addBoard" class="row justify-content-center fade-in">
       <input type="text" placeholder="title" v-model="newBoard.title" required  class="col-10 m-1"/>
       <textarea type="text" placeholder="description" v-model="newBoard.description" class="col-10 m-1"/>
@@ -16,17 +16,17 @@
         <div class="row darken-bg">
           <div class="col-3 profile-box p-3">
           <img :src="board.creator.picture" alt="" class="profile my-1">
-          <p>
+          <p class="nixie">
           {{board.creator.name}}
           </p>
           
           </div>
             <div class="col-9 d-flex flex-column justify-content-around text-pop">
               <router-link :to="{name: 'board', params: {boardId: board.id}}">
-              <h1>
+              <h1 class="fjalla">
               {{board.title}} 
               </h1>
-              <h4>
+              <h4 class="comorant">
               {{board.description}}
               </h4>
             </router-link> 

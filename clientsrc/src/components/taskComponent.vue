@@ -3,7 +3,7 @@
     <div v-if="!editMode" class="row justify-content-between px-2">
       <div class="d-flex justify-content-between">
         <i class="fa fa-pencil-alt mt-2 mx-1 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
-        <h4 class="card-title">{{taskProp.title}} </h4>
+        <h4 class="card-title comorant">{{taskProp.title}} </h4>
         <div class="dropdown mx-1">
           <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

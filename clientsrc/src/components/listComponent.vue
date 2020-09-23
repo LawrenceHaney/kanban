@@ -5,7 +5,7 @@
                 <div v-if="!editMode" class="row justify-content-between">
                     <div class="d-flex">
                         <i class="fa fa-pencil-alt mt-2 ml-3 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
-                        <h3 class="card-title ml-1">{{listProp.title}} </h3>
+                        <h3 class="card-title ml-1 yeseva">{{listProp.title}} </h3>
                     </div>
                     <i class="fa fa-times align-self-start mr-3 icon-pop" @click="deleteList" aria-hidden="true"></i>
                 </div>

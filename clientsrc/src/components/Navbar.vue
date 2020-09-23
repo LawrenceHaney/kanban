@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand" :to="{ name: 'home' }"
+    <router-link class="navbar-brand fjalla" :to="{ name: 'home' }"
       >Kanban</router-link
     >
     <button
@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" :class="{ active: $route.name == 'home' }">
-          <router-link :to="{ name: 'home' }" class="nav-link"
+          <router-link :to="{ name: 'home' }" class="nav-link comorant"
             >Home</router-link
           >
         </li>
@@ -26,7 +26,7 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'boards' }"
         >
-          <router-link class="nav-link" :to="{ name: 'boards' }"
+          <router-link class="nav-link comorant" :to="{ name: 'boards' }"
             >{{$auth.userInfo.name}}</router-link
           >
         </li>

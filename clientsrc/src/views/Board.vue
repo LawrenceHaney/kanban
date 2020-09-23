@@ -4,7 +4,7 @@
       <div v-if="!editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2">
         <div class="d-flex">
           <i class="fa fa-pencil-alt align-self-center icon-pop ml-2" @click="toggleEdit" aria-hidden="true"></i>
-          <h1 class="mx-2">{{board.title}}</h1>
+          <h1 class="mx-2 fjalla">{{board.title}}</h1>
         </div>
         <i class="fa fa-times align-self-start mr-3 icon-pop" @click="deleteBoard" aria-hidden="true"></i>
       </div>
