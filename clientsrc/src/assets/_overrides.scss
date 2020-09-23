@@ -52,6 +52,11 @@ flex-direction: column;
 .land-img{
   max-height: 45vh;
 }
+.land-img-3{
+  max-width: 20vw;
+  object-fit: cover;
+}
+
 .land1{
   background-image: url(https://images.unsplash.com/photo-1589792924333-edbfbe7c8be7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
   background-position: center;
@@ -60,7 +65,6 @@ flex-direction: column;
 
 .darken-bg{
   background-color: transparentize($color: #080708, $amount: .30);
-
 }
 
 .fade-in { 
@@ -76,3 +80,7 @@ flex-direction: column;
       opacity: 1; 
   } 
 } 
+
+.spacer{
+  height: 30vh;
+}
