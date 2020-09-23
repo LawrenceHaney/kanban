@@ -16,7 +16,7 @@
                                     class="fa fa-undo align-self-center" aria-hidden="true"></i></button>
                         </div>
                         <input type="text" class="form-control bg-light" v-model="newList.title"
-                            placeholder="New Title">
+                            :placeholder="listProp.title">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" @click="editList" type="button"><i
                                     class="fas fa-save align-self-center"></i></button>
@@ -49,7 +49,7 @@
         data() {
             return {
                 newTask: {},
-                newList: {},
+                newList: { title: this.listProp.title },
                 editMode: false
             }
         },

@@ -60,7 +60,7 @@
           creatorEmail: this.$auth.userInfo.email,
         },
         newBoard: {
-          title: "",
+          title: this.$store.state.activeBoard.title,
           id: this.$route.params.boardId,
           creatorEmail: this.$auth.userInfo.email,
         },

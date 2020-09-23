@@ -31,7 +31,7 @@
     props: ["commentProp"],
     data() {
       return {
-        newComment: {},
+        newComment: { title: this.commentProp.title },
         editMode: false,
 
       }

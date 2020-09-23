@@ -50,7 +50,7 @@
     data() {
       return {
         newComment: {},
-        newTask: {},
+        newTask: { title: this.taskProp.title },
         editMode: false,
         moveMode: false,
       }

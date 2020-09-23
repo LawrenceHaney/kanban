@@ -121,7 +121,11 @@ export default new Vuex.Store({
     async editList({ commit, dispatch, state }, list) {
       try {
         let res = await api.put("lists/" + list.id, list)
-        commit("setLists", [...state.lists.filter(l => l.id != list.id), list])
+        let newLists = state.lists
+        let index = newLists.findIndex(l => l.id == list.id)
+        newLists[index].title = list.title
+        console.log(newLists)
+        commit("setLists", newLists)
       } catch (error) {
         console.error(error);
       }
@@ -130,85 +134,85 @@ export default new Vuex.Store({
 
     //#endregion
 
-        //#region -- TASK --
-        async getTasks({ commit, dispatch }, listId) {
-          let res = await api.get('lists/' + listId + '/tasks')
-          commit("setTasks", {tasks: res.data, listId})
-        },
-        async addTask({ commit, dispatch, state }, task) {
-          await api.post('tasks/', task)
-            .then(serverTask => {
-              dispatch('getTasks', task.listId)
-            })
-        },
-        async deleteTask({ commit, dispatch, state }, task) {
-          try {
-            await api.delete("tasks/" + task.id)
-            .then(serverTask => {
-              dispatch('getTasks', task.listId)
-            })
-          } catch (error) {
-            console.error(error);
-          }
-        },
-        async editTask({ commit, dispatch, state }, task) {
-          try {
-            let res = await api.put("tasks/" + task.id, task)
-            .then(serverTask => {
-              dispatch('getTasks', task.listId)
-            })
-          } catch (error) {
-            console.error(error);
-          }
-        },
-        async moveTask({ commit, dispatch, state }, task) {
-          try {
-            let listId= task.listId
-            task.listId = task.newId
-            let res = await api.put("tasks/" + task.id, task)
-            .then(serverTask => {
-              dispatch('getTasks', listId)
-              dispatch('getTasks', task.listId)
-            })
-          } catch (error) {
-            console.error(error);
-          }
-        },
-    
-    
-        //#endregion
-        //#region -- Comments --
-        async getComments({ commit, dispatch }, taskId) {
-          let res = await api.get('tasks/' + taskId + '/comments')
-          commit("setComments", {comments: res.data, taskId})
-        },
-        async addComment({ commit, dispatch, state }, comment) {
-          await api.post('comments/', comment)
-            .then(serverComment => {
-              dispatch('getComments', comment.taskId)
-            })
-        },
-        async deleteComment({ commit, dispatch, state }, comment) {
-          try {
-            await api.delete("comments/" + comment.id)
-            .then(serverComment => {
-              dispatch('getComments', comment.taskId)
-            })
-          } catch (error) {
-            console.error(error);
-          }
-        },
-        async editComment({ commit, dispatch, state }, comment) {
-          try {
-            let res = await api.put("comments/" + comment.id, comment)
-            .then(serverComment => {
-              dispatch('getComments', comment.taskId)
-            })
-          } catch (error) {
-            console.error(error);
-          }
-        },
-    
-        //#endregion
+    //#region -- TASK --
+    async getTasks({ commit, dispatch }, listId) {
+      let res = await api.get('lists/' + listId + '/tasks')
+      commit("setTasks", { tasks: res.data, listId })
+    },
+    async addTask({ commit, dispatch, state }, task) {
+      await api.post('tasks/', task)
+        .then(serverTask => {
+          dispatch('getTasks', task.listId)
+        })
+    },
+    async deleteTask({ commit, dispatch, state }, task) {
+      try {
+        await api.delete("tasks/" + task.id)
+          .then(serverTask => {
+            dispatch('getTasks', task.listId)
+          })
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async editTask({ commit, dispatch, state }, task) {
+      try {
+        let res = await api.put("tasks/" + task.id, task)
+          .then(serverTask => {
+            dispatch('getTasks', task.listId)
+          })
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async moveTask({ commit, dispatch, state }, task) {
+      try {
+        let listId = task.listId
+        task.listId = task.newId
+        let res = await api.put("tasks/" + task.id, task)
+          .then(serverTask => {
+            dispatch('getTasks', listId)
+            dispatch('getTasks', task.listId)
+          })
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+
+    //#endregion
+    //#region -- Comments --
+    async getComments({ commit, dispatch }, taskId) {
+      let res = await api.get('tasks/' + taskId + '/comments')
+      commit("setComments", { comments: res.data, taskId })
+    },
+    async addComment({ commit, dispatch, state }, comment) {
+      await api.post('comments/', comment)
+        .then(serverComment => {
+          dispatch('getComments', comment.taskId)
+        })
+    },
+    async deleteComment({ commit, dispatch, state }, comment) {
+      try {
+        await api.delete("comments/" + comment.id)
+          .then(serverComment => {
+            dispatch('getComments', comment.taskId)
+          })
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async editComment({ commit, dispatch, state }, comment) {
+      try {
+        let res = await api.put("comments/" + comment.id, comment)
+          .then(serverComment => {
+            dispatch('getComments', comment.taskId)
+          })
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    //#endregion
   }
 })
