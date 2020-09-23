@@ -65,7 +65,7 @@
                     this.newList.id = this.listProp.id
                     this.$store.dispatch("editList", this.newList)
                     this.toggleEdit()
-                } else window.alert("you must type something")
+                } else window.alert("Field cannot be empty")
             },
             toggleEdit() {
                 this.editMode = !this.editMode
