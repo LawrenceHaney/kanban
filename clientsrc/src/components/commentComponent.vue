@@ -1,17 +1,25 @@
 <template>
   <div class="card row mx-2 my-1 p-2 text-dark">
-    <div v-if="!editMode" class="col d-flex flex-column justify-content-between">
-      <p class="row">{{commentProp.title}} </p>
-      <div class="row justify-content-end">
-        <button type="button" class="btn btn-outline-success mr-1" @click="toggleEdit">Edit</button>
-        <button type="button" class="btn btn-outline-danger" @click="deleteComment">Delete</button>
+    <div v-if="!editMode" class="col d-flex justify-content-between">
+      <div class="row">
+        <i class="fa fa-pencil-alt mx-1 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
+        <h6>{{commentProp.title}} </h6>
       </div>
+      <i class="fa fa-times align-self-start  icon-pop" @click="deleteComment" aria-hidden="true"></i>
     </div>
     <div v-else class="col d-flex flex-column justify-content-between">
-      <input v-model="newComment.title" :placeholder="commentProp.title" class="card-title" />
       <div class="row justify-content-end">
-        <button type="button" class="btn btn-outline-success" @click="editComment">Save</button>
-        <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-secondary" @click="toggleEdit" type="button"><i class="fa fa-undo align-self-center"
+                aria-hidden="true"></i></button>
+          </div>
+          <input type="text" class="form-control bg-light" v-model="newComment.title" :placeholder="commentProp.title">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" @click="editComment" type="button"><i
+                class="fas fa-save align-self-center"></i></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-between">
         <i class="fa fa-pencil-alt mt-2 mx-1 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
         <h4 class="card-title">{{taskProp.title}} </h4>
-        <div class="dropdown">
+        <div class="dropdown mx-1">
           <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>
@@ -15,15 +15,22 @@
           </div>
         </div>
       </div>
-      <i class="fa fa-times align -self-start mr-3 icon-pop" @click="deleteTask" aria-hidden="true"></i>
+      <i class="fa fa-times align-self-start  icon-pop" @click="deleteTask" aria-hidden="true"></i>
     </div>
     <div v-if="editMode" class="row justify-content-between px-1">
-      <input v-model="newTask.title" :placeholder="taskProp.title" class="card-title" />
-      <div>
-        <button type="button" class="btn btn-light" @click="editTask">Save</button>
-        <button type="button" class="btn btn-danger" @click="toggleEdit">Cancel</button>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-secondary" @click="toggleEdit" type="button"><i class="fa fa-undo align-self-center"
+              aria-hidden="true"></i></button>
+        </div>
+        <input type="text" class="form-control bg-light" v-model="newTask.title" placeholder="New Title">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" @click="editTask" type="button"><i
+              class="fas fa-save align-self-center"></i></button>
+        </div>
       </div>
     </div>
+
     <comment-component class="row" v-for="comment in comments" :key="comment.id" :commentProp="comment" />
     <form @submit.prevent="addComment" class="mt-3 mb-1">
       <div class="input-group mt-3">
