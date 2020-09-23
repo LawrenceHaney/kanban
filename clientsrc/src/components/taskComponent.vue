@@ -1,9 +1,9 @@
 <template>
-  <div class="card col-11 my-1 py-1 darken-bg text-light">
+  <div class="card col-12 my-1 py-1 darken-bg content-shadow-lite2">
     <div v-if="!editMode" class="row justify-content-between px-2">
       <div class="d-flex justify-content-between">
-        <i class="fa fa-pencil-alt mt-2 mx-1 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
-        <h4 class="card-title comorant">{{taskProp.title}} </h4>
+        <i class="fa fa-pencil-alt mt-2 mx-1 icon-pop text-pop" @click="toggleEdit" aria-hidden="true"></i>
+        <h4 class="card-title comorant text-pop">{{taskProp.title}} </h4>
         <div class="dropdown mx-1">
           <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-      <i class="fa fa-times align-self-start  icon-pop" @click="deleteTask" aria-hidden="true"></i>
+      <i class="fa fa-times align-self-start  icon-pop text-pop" @click="deleteTask" aria-hidden="true"></i>
     </div>
     <div v-if="editMode" class="row justify-content-between px-1">
       <div class="input-group mb-3">

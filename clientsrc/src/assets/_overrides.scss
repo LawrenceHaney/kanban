@@ -26,6 +26,14 @@ flex-direction: column;
   box-shadow: .5em .5em 0px #080708;
 }
 
+.content-shadow-lite{
+  box-shadow: .25em .25em .25em #080708;
+}
+
+.content-shadow-lite2{
+  box-shadow: .1em .1em .25em #080708;
+}
+
 .text-pop{
   color: var(--light);
   text-shadow: .1em .1em 0px var(--dark);
@@ -38,11 +46,15 @@ flex-direction: column;
   transform: scale(1.05);
   box-shadow: .6em .6em 1em #080708;
 }
+.icon-pop{
+  margin: 2px;
+}
+
 .icon-pop:hover{
   transform: scale(1.1);
 }
 .bg-faded{
-  background-color: transparentize($color: #ffffff, $amount: .25);
+  background-color: transparentize($color: #F8F6F7, $amount: .10);
 }
 .profile{
   border-radius: 50%;
@@ -53,6 +65,8 @@ flex-direction: column;
 
 .land-img{
   max-height: 45vh;
+  object-fit: cover;
+  max-width: 30vw;
 }
 .land-img-3{
   object-fit: cover;

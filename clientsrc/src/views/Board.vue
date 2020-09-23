@@ -1,7 +1,7 @@
 <template>
   <div class="board container-fluid">
     <div v-if="board.title">
-      <div v-if="!editMode" class="row justify-content-between align-items-center text-dark bg-faded py-2 mb-3">
+      <div v-if="!editMode" class="row justify-content-between align-items-center text-dark bg-faded py-2 mb-3 content-shadow-lite">
         <div class="d-flex fade-in">
           <i class="fa fa-pencil-alt align-self-center icon-pop ml-2" @click="toggleEdit" aria-hidden="true"></i>
           <h1 class="mx-2 fjalla">{{board.title}}</h1>
