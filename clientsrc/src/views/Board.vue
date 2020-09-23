@@ -1,27 +1,33 @@
 <template>
   <div class="board container-fluid">
     <div v-if="board.title">
-      <div v-if="!editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2 mb-2">
+      <div v-if="!editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2">
         <div class="d-flex">
+          <i class="fa fa-pencil-alt align-self-center icon-pop ml-2" @click="toggleEdit" aria-hidden="true"></i>
           <h1 class="mx-2">{{board.title}}</h1>
-          <i class="fa fa-pencil-alt align-self-center icon-pop" @click="toggleEdit" aria-hidden="true"></i>
         </div>
         <i class="fa fa-times align-self-start mr-3 icon-pop" @click="deleteBoard" aria-hidden="true"></i>
       </div>
-      <div v-if="editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2 mb-2">
-        <div class="mb-4">
+      <div v-if="editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2">
+        <div class="mt-2 mb-3 d-flex">
           <i class="fa fa-undo align-self-center icon-pop ml-2" @click="toggleEdit" aria-hidden="true"></i>
-          <input class="mx-1" type="text" :placeholder="board.title" v-model="newBoard.title" required />
+          <input class="mx-1 form-control bg-light" type="text" :placeholder="board.title" v-model="newBoard.title"
+            required />
           <i class="fas fa-save align-self-center icon-pop" @click="editBoard"></i>
         </div>
       </div>
       <!-- List form -->
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mt-2">
         <form @submit.prevent="addList">
-          <input type="text" placeholder="Board Title" v-model="newList.title" required />
-          <button type="submit" class="btn btn-success">Create List</button>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control bg-light" v-model="newList.title" placeholder="New List">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="submit">Create List</button>
+            </div>
+          </div>
         </form>
       </div>
+
       <!-- List components -->
       <div class="row">
         <list-component v-for="list in lists" :key="list.id" :listProp="list" />

@@ -3,24 +3,30 @@
         <div class="card">
             <div class="card-body">
                 <div v-if="!editMode" class="row justify-content-between">
-                    <h3 class="card-title pl-3">{{listProp.title}} </h3>
-                    <div>
-                        <button type="button" class="btn btn-outline-success" @click="toggleEdit">Edit</button>
-                        <button type="button" class="btn btn-outline-danger" @click="deleteList">Delete</button>
+                    <div class="d-flex">
+                        <i class="fa fa-pencil-alt mt-2 ml-3 icon-pop" @click="toggleEdit" aria-hidden="true"></i>
+                        <h3 class="card-title ml-1">{{listProp.title}} </h3>
                     </div>
+                    <i class="fa fa-times align-self-start mr-3 icon-pop" @click="deleteList" aria-hidden="true"></i>
                 </div>
                 <div v-else class="row justify-content-between">
-                    <input v-model="newList.title" :placeholder="listProp.title" class="card-title" />
                     <div>
-                        <button type="button" class="btn btn-outline-danger" @click="editList">Save</button>
-                        <button type="button" class="btn btn-outline-danger" @click="toggleEdit">Cancel</button>
+                        <i class="fa fa-undo align-self-center icon-pop ml-2" @click="toggleEdit"
+                            aria-hidden="true"></i>
+                        <input v-model="newList.title" :placeholder="listProp.title" class="card-title" />
+                        <i class="fas fa-save align-self-center icon-pop" @click="editList"></i>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <task-component v-for="task in tasks" :key="task.id" :taskProp="task" />
                     <form @submit.prevent="addTask">
-                        <input type="text" placeholder="Add Task" v-model="newTask.title" required />
-                        <button class="btn btn-secondary" type="submit">Create Task</button>
+                        <div class="input-group mt-3">
+                            <input type="text" class="form-control bg-light" v-model="newTask.title"
+                                placeholder="New Task">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit">Create Task</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -61,7 +67,6 @@
             },
             editList() {
                 if (this.newList.title) {
-
                     this.newList.id = this.listProp.id
                     this.$store.dispatch("editList", this.newList)
                     this.toggleEdit()
