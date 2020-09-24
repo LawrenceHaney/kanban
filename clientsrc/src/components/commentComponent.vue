@@ -47,9 +47,27 @@
         this.toggleEdit()
       },
       deleteComment() {
-        if (window.confirm("Are you sure you want to delete this list?")) {
-          this.$store.dispatch("deleteComment", this.commentProp)
-        }
+        Swal.fire({
+          title: 'Are you sure you want to delete this comment?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: 'var(--danger)',
+          cancelButtonColor: 'var(--success)',
+          confirmButtonText: 'Yes, delete it!',
+          background: 'var(--lighttransparent)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.$store.dispatch("deleteComment", this.commentProp)
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your comment has been deleted.',
+              confirmButtonText: 'OK',
+              background: 'var(--lighttransparent)',
+              icon: 'success'
+            })
+          }
+        })
       }
     }
 

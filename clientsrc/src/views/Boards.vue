@@ -1,12 +1,12 @@
 <template>
   <div class="boards container-fluid">
     <div class="row justify-content-around">
-    <div class="col-3 darken-bg p-4 my-4 content-shadow pop">
-      <h1 class="card-title text-pop fade-in fjalla">Add a new board</h1>
-    <form @submit.prevent="addBoard" class="row justify-content-center fade-in">
-      <input type="text" placeholder="title" v-model="newBoard.title" required  class="col-10 m-1"/>
-      <textarea type="text" placeholder="description" v-model="newBoard.description" class="col-10 m-1"/>
-      <button type="submit" class="btn btn-outline-light m-1 fade-in">Create Board</button>
+      <div class="col-3 darken-bg p-4 my-4 content-shadow pop">
+        <h1 class="card-title text-pop fade-in fjalla">Add a new board</h1>
+        <form @submit.prevent="addBoard" class="row justify-content-center fade-in">
+          <input type="text" placeholder="title" v-model="newBoard.title" required class="col-10 m-1" />
+          <textarea type="text" placeholder="description" v-model="newBoard.description" class="col-10 m-1" />
+          <button type="submit" class="btn btn-outline-light m-1 fade-in">Create Board</button>
     </form>
       </div>
       <div class="col-10 card darken-bg my-4 content-shadow">
@@ -65,9 +65,27 @@
         this.newBoard = { title: "", description: "" };
       },
       deleteBoard(id) {
-        if (window.confirm("Are you sure you want to delete this board?")) {
-          this.$store.dispatch("deleteBoard", id)
-        }
+        Swal.fire({
+          title: 'Are you sure you want to delete this board?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: 'var(--danger)',
+          cancelButtonColor: 'var(--success)',
+          confirmButtonText: 'Yes, delete it!',
+          background: 'var(--lighttransparent)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.$store.dispatch("deleteBoard", id)
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your board has been deleted.',
+              confirmButtonText: 'OK',
+              background: 'var(--lighttransparent)',
+              icon: 'success'
+            })
+          }
+        })
       }
     }
   };

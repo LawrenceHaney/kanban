@@ -1,3 +1,10 @@
+//Custom variables
+$lighttransparent:transparentize($color: #F8F6F7, $amount: .025);
+
+//end custom variables
+
+
+
 $body-bg: #CEBCA4;
 
 $primary: #719394;
@@ -38,7 +45,8 @@ $colors: (
 "cyan": $cyan,
 "white": $white,
 "gray": $gray,
-"gray-dark": $gray-dark
+"gray-dark": $gray-dark,
+"lighttransparent": $lighttransparent
 ) !default;
 
 // .btn-primary {

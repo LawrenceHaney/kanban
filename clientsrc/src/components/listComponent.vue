@@ -1,6 +1,5 @@
 <template>
-    <div class="list col-4 my-2" @drop.prevent="movetask($event)" @dragover.prevent
-      @dragenter.prevent dropzone="zone">
+    <div class="list col-4 my-2" @drop.prevent="movetask($event)" @dragover.prevent @dragenter.prevent dropzone="zone">
         <div class="card bg-faded content-shadow-lite">
             <div class="card-body">
                 <div v-if="!editMode" class="row justify-content-between text-dark">
@@ -70,9 +69,27 @@
                 this.newTask = {}
             },
             deleteList() {
-                if (window.confirm("Are you sure you want to delete this list?")) {
-                    this.$store.dispatch("deleteList", this.listProp.id)
-                }
+                Swal.fire({
+                    title: 'Are you sure you want to delete this list?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: 'var(--danger)',
+                    cancelButtonColor: 'var(--success)',
+                    confirmButtonText: 'Yes, delete it!',
+                    background: 'var(--lighttransparent)'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.$store.dispatch("deleteList", this.listProp.id)
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: 'Your list has been deleted.',
+                            confirmButtonText: 'OK',
+                            background: 'var(--lighttransparent)',
+                            icon: 'success'
+                        })
+                    }
+                })
             },
             editList() {
                 if (this.newList.title) {
@@ -84,7 +101,7 @@
             toggleEdit() {
                 this.editMode = !this.editMode
             },
-            movetask(ev){
+            movetask(ev) {
                 ev.preventDefault()
                 let task = JSON.parse(ev.dataTransfer.getData("text"))
                 task.newId = this.listProp.id

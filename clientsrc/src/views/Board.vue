@@ -1,22 +1,23 @@
 <template>
   <div class="board container-fluid">
     <div v-if="board.title">
-      <div v-if="!editMode" class="row justify-content-between align-items-center text-dark bg-faded py-2 mb-3 content-shadow-lite">
+      <div v-if="!editMode"
+        class="row justify-content-between align-items-center text-dark bg-faded py-2 mb-3 content-shadow-lite">
         <div class="d-flex fade-in">
           <i class="fa fa-pencil-alt align-self-center icon-pop ml-2" @click="toggleEdit" aria-hidden="true"></i>
           <h1 class="mx-2 fjalla">{{board.title}}</h1>
         </div>
-      <!-- List form -->
-      <div class="row justify-content-center mt-2 fade-in">
-        <form @submit.prevent="addList">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control bg-light" v-model="newList.title" placeholder="New List">
-            <div class="input-group-append">
-              <button class="btn btn-secondary" type="submit">Create List</button>
+        <!-- List form -->
+        <div class="row justify-content-center mt-2 fade-in">
+          <form @submit.prevent="addList">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control bg-light" v-model="newList.title" placeholder="New List">
+              <div class="input-group-append">
+                <button class="btn btn-secondary" type="submit">Create List</button>
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
         <i class="fa fa-times align-self-start mr-3 icon-pop fade-in" @click="deleteBoard" aria-hidden="true"></i>
       </div>
       <div v-if="editMode" class="row justify-content-between align-items-center text-dark bg-faded pt-2">
@@ -33,7 +34,7 @@
             </div>
           </div>
         </div>
-      
+
       </div>
 
 
@@ -95,9 +96,27 @@
         } else window.alert("Field cannot be empty")
       },
       deleteBoard() {
-        if (window.confirm("Are you sure you want to delete this board?")) {
-          this.$store.dispatch("deleteBoard", this.$route.params.boardId)
-        }
+        Swal.fire({
+          title: 'Are you sure you want to delete this board?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: 'var(--danger)',
+          cancelButtonColor: 'var(--success)',
+          confirmButtonText: 'Yes, delete it!',
+          background: 'var(--lighttransparent)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.$store.dispatch("deleteBoard", this.$route.params.boardId)
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your board has been deleted.',
+              confirmButtonText: 'OK',
+              background: 'var(--lighttransparent)',
+              icon: 'success'
+            })
+          }
+        })
       }
     },
     components: {

@@ -61,9 +61,27 @@
         } else window.alert("Field cannot be empty")
       },
       deleteTask() {
-        if (window.confirm("Are you sure you want to delete this task?")) {
-          this.$store.dispatch("deleteTask", this.taskProp)
-        }
+        Swal.fire({
+          title: 'Are you sure you want to delete this task?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: 'var(--danger)',
+          cancelButtonColor: 'var(--success)',
+          confirmButtonText: 'Yes, delete it!',
+          background: 'var(--lighttransparent)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.$store.dispatch("deleteTask", this.taskProp)
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your task has been deleted.',
+              confirmButtonText: 'OK',
+              background: 'var(--lighttransparent)',
+              icon: 'success'
+            })
+          }
+        })
       },
       toggleEdit() {
         this.editMode = !this.editMode
@@ -80,9 +98,9 @@
       //   this.toggleMove()
       // },
       drag(ev) {
-      ev.dataTransfer.setData("text", JSON.stringify(this.taskProp));
-      console.log(ev)
-}
+        ev.dataTransfer.setData("text", JSON.stringify(this.taskProp));
+        console.log(ev)
+      }
 
     },
     mounted() {
