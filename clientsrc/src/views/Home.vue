@@ -3,10 +3,10 @@
       <div class="row">
         <div class="col-12 land1">
           <div class="darken-bg row p-3">
-            <div class="col-3">
+            <div class="d-none d-lg-block col-lg-3">
               <img src="https://images.unsplash.com/photo-1589792924333-edbfbe7c8be7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="" class="land-img content-shadow pop fade-in">
             </div>
-          <div class="col-8 darken-bg text-pop fade-in p-4 d-flex flex-column justify-content-around">
+          <div class="col-12 col-lg-8 darken-bg text-pop fade-in p-4 d-flex flex-column justify-content-around">
             <h1 class="text-left fjalla">Kanban 看板</h1>
               <blockquote class="blockquote text-center align-self-center">
                 <p class="mb-0 yeseva "> To produce only what is needed, when it is needed and in the amount needed. </p>
@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-12 land1">
         <div class="darken-bg row py-3 justify-content-around">
-          <div class="flip-card col-3 fade-in">
+          <div class="flip-card col-12 col-lg-3 fade-in">
             <div class="flip-card-inner">
               <div class="flip-card-front card-1 content-shadow">
               </div>
@@ -35,7 +35,7 @@
               </div>
             </div>
           </div>
-          <div class="flip-card col-3 fade-in">
+          <div class="flip-card col-12 col-lg-3 fade-in">
             <div class="flip-card-inner">
               <div class="flip-card-front card-2 content-shadow">
               </div>
@@ -48,7 +48,7 @@
               </div>
             </div>
           </div>
-          <div class="flip-card col-3 fade-in">
+          <div class="flip-card col-12 col-lg-3 fade-in">
             <div class="flip-card-inner">
               <div class="flip-card-front card-3 content-shadow">
               </div>
@@ -69,12 +69,12 @@
     <div class="row">
       <div class="col-12 land1">
         <div class="darken-bg row p-3">
-        <div class="col-8 darken-bg text-pop fade-in p-4 d-flex flex-column justify-content-around">
+        <div class="col-12 col-lg-8 darken-bg text-pop fade-in p-4 d-flex flex-column justify-content-around">
           <h1 class="text-left fjalla">Kanban for Programming</h1>
             <h3 class="text-center yeseva">Modern workflows for modern applications</h3>
             <p class="comorant text-center">Work is beter when teams work together. Kanban boards provide a backbone to suport a teams growing workload while giving them room grow alongside the scope of the project. Do more with less and cut down on needless meetings and emails.</p>
           </div>
-          <div class="col-3">
+          <div class="col-3 d-none d-lg-block">
             <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="" class="land-img content-shadow pop fade-in">
           </div>
         </div>

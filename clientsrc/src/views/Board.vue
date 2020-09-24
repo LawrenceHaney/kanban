@@ -39,7 +39,7 @@
 
 
       <!-- List components -->
-      <div class="row fade-in">
+      <div class="row fade-in justify-content-around">
         <list-component v-for="list in lists" :key="list.id" :listProp="list" />
       </div>
     </div>

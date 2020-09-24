@@ -1,5 +1,5 @@
 <template>
-    <div class="list col-4 my-2" @drop.prevent="movetask($event)" @dragover.prevent @dragenter.prevent dropzone="zone">
+    <div class="list col-10 col-lg-3 my-2" @drop.prevent="movetask($event)" @dragover.prevent @dragenter.prevent dropzone="zone">
         <div class="card bg-faded content-shadow-lite">
             <div class="card-body">
                 <div v-if="!editMode" class="row justify-content-between text-dark">

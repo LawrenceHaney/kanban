@@ -1,7 +1,7 @@
 <template>
   <div class="boards container-fluid">
     <div class="row justify-content-around">
-      <div class="col-3 darken-bg p-4 my-4 content-shadow pop">
+      <div class="col-12 col-lg-3 darken-bg p-4 my-4 content-shadow pop">
         <h1 class="card-title text-pop fade-in fjalla">Add a new board</h1>
         <form @submit.prevent="addBoard" class="row justify-content-center fade-in">
           <input type="text" placeholder="title" v-model="newBoard.title" required class="col-10 m-1" />
@@ -9,19 +9,19 @@
           <button type="submit" class="btn btn-outline-light m-1 fade-in">Create Board</button>
     </form>
       </div>
-      <div class="col-10 card darken-bg my-4 content-shadow">
+      <div class="col-12 col-lg-10 card darken-bg my-4 content-shadow">
 
     <div v-for="board in boards" :key="board.id" class="row justify-content-around my-2">
       <div class="justify-content-between col-10 my-2 pop fade-in p-2 text-pop">
         <div class="row darken-bg">
-          <div class="col-3 profile-box p-3">
+          <div class="col-3 d-none d-lg-block profile-box p-3">
           <img :src="board.creator.picture" alt="" class="profile my-1">
           <p class="nixie">
           {{board.creator.name}}
           </p>
           
           </div>
-            <div class="col-9 d-flex flex-column justify-content-around text-pop">
+            <div class="col-12 col-lg-9 d-flex flex-column justify-content-around text-pop">
               <router-link :to="{name: 'board', params: {boardId: board.id}}">
               <h1 class="fjalla">
               {{board.title}} 
