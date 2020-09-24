@@ -14,7 +14,7 @@
             <button class="btn btn-secondary" @click="toggleEdit" type="button"><i class="fa fa-undo align-self-center"
                 aria-hidden="true"></i></button>
           </div>
-          <input type="text" class="form-control" v-model="newComment.title" :placeholder="commentProp.title">
+          <input type="text" class="form-control bg-light" v-model="newComment.title" :placeholder="commentProp.title">
           <div class="input-group-append">
             <button class="btn btn-secondary" @click="editComment" type="button"><i
                 class="fas fa-save align-self-center"></i></button>
