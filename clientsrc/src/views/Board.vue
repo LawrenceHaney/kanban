@@ -8,7 +8,7 @@
           <h1 class="mx-2 fjalla">{{board.title}}</h1>
         </div>
         <!-- List form -->
-        <div class="row justify-content-center mt-2 fade-in">
+        <div class="justify-content-center mt-2 fade-in">
           <form @submit.prevent="addList">
             <div class="input-group mb-3">
               <input type="text" class="form-control bg-light" v-model="newList.title" placeholder="New List">
