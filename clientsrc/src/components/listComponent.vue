@@ -1,5 +1,6 @@
 <template>
-    <div class="list col-4 my-2">
+    <div class="list col-4 my-2" @drop.prevent="movetask($event)" @dragover.prevent
+      @dragenter.prevent dropzone="zone">
         <div class="card bg-faded content-shadow-lite">
             <div class="card-body">
                 <div v-if="!editMode" class="row justify-content-between text-dark">
@@ -25,7 +26,7 @@
 
                 </div>
                 <div class="row justify-content-center">
-                    <task-component v-for="task in tasks" :key="task.id" :taskProp="task" />
+                    <task-component v-for="task in tasks" :key="task.id" :taskProp="task" draggable="true" />
                     <form @submit.prevent="addTask">
                         <div class="input-group mt-3">
                             <input type="text" class="form-control bg-light" v-model="newTask.title"
@@ -82,6 +83,12 @@
             },
             toggleEdit() {
                 this.editMode = !this.editMode
+            },
+            movetask(ev){
+                ev.preventDefault()
+                let task = JSON.parse(ev.dataTransfer.getData("text"))
+                task.newId = this.listProp.id
+                this.$store.dispatch("moveTask", task)
             }
         },
         props: ["listProp"],

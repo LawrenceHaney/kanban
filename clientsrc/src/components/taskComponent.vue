@@ -1,19 +1,9 @@
 <template>
-  <div class="card col-12 my-1 py-1 darken-bg content-shadow-lite2">
+  <div :id="taskProp.id" class="card col-12 my-1 py-1 darken-bg content-shadow-lite2" @dragstart="drag($event)">
     <div v-if="!editMode" class="row justify-content-between px-2">
       <div class="d-flex justify-content-between">
         <i class="fa fa-pencil-alt mt-2 mx-1 icon-pop text-pop" @click="toggleEdit" aria-hidden="true"></i>
         <h4 class="card-title comorant text-pop">{{taskProp.title}} </h4>
-        <div class="dropdown mx-1">
-          <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div v-for="list in lists" :key="list.id">
-              <button class="dropdown-item" @click="moveTask(list.id)">{{list.title}}</button>
-            </div>
-          </div>
-        </div>
       </div>
       <i class="fa fa-times align-self-start  icon-pop text-pop" @click="deleteTask" aria-hidden="true"></i>
     </div>
@@ -81,13 +71,19 @@
       toggleMove() {
         this.moveMode = !this.moveMode
       },
-      moveTask(newId) {
-        this.newTask.listId = this.taskProp.listId
-        this.newTask.newId = newId
-        this.newTask.id = this.taskProp.id
-        this.$store.dispatch("moveTask", this.newTask)
-        this.toggleMove()
-      }
+      //legacy move
+      // moveTask(newId) {
+      //   this.newTask.listId = this.taskProp.listId
+      //   this.newTask.newId = newId
+      //   this.newTask.id = this.taskProp.id
+      //   this.$store.dispatch("moveTask", this.newTask)
+      //   this.toggleMove()
+      // },
+      drag(ev) {
+      ev.dataTransfer.setData("text", JSON.stringify(this.taskProp));
+      console.log(ev)
+}
+
     },
     mounted() {
       this.$store.dispatch("getComments", this.taskProp.id)
